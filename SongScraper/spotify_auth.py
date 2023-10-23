@@ -13,9 +13,9 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id='189efcff65934a48b7d96f
 # Make multiple requests to retrieve all songs
 def songs_to_database():
     offset = 0
-    max_songs = 20
+    max_songs = 10
     while offset < max_songs:
-        results = sp.current_user_saved_tracks(limit=50, offset=offset)
+        results = sp.current_user_saved_tracks(limit=10, offset=offset)
         songs = results['items']
         for song in songs:
             name = song['track']['name']
