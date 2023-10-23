@@ -1,4 +1,6 @@
 import spotipy
+from add_songs import add_song
+from database import connect_to_database 
 from spotipy.oauth2 import SpotifyOAuth
 
 # Set up authentication
@@ -8,5 +10,19 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id='189efcff65934a48b7d96f
                                                scope='user-library-read'))
 
 # Fetch liked songs
-liked_songs = sp.current_user_saved_tracks()
-
+# Make multiple requests to retrieve all songs
+def songs_to_database():
+    offset = 0
+    max_songs = 20
+    while offset < max_songs:
+        results = sp.current_user_saved_tracks(limit=50, offset=offset)
+        songs = results['items']
+        for song in songs:
+            name = song['track']['name']
+            artist = song['track']['artists'][0]['name']
+            spotify_link = song['track']['external_urls']['spotify']
+            add_song(name, artist,spotify_link, "")
+        offset += len(songs)
+    
+    return songs
+    

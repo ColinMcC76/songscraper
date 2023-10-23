@@ -1,16 +1,12 @@
-from spotify_auth import liked_songs
+from spotify_auth import songs_to_database
 from database import *
 from convert_to_mp3 import *
-from youtube_search import *
-from add_song import *
+from youtube_search import search_youtube
+# from add_songs import *
 # import spotipy
 import sqlite3
 
-spotify_library = liked_songs
+spotify_library = songs_to_database()
 
-for song in liked_songs['items']:
-    name = song['track']['name']
-    artist = song['track']['artists'][0]['name']
-    spotify_link = song['track']['external_urls']['spotify']
+search_youtube(spotify_library)
 
-    add_song(name, artist,spotify_link, "")

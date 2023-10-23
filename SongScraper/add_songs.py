@@ -1,9 +1,9 @@
-import database 
+from database import connect_to_database
 import sqlite3
 
 def add_song(name, artist, spotify_link, youtube_link):
     # Connect to the database
-    conn, c = database.connect_to_database()
+    conn, c = connect_to_database()
 
     # Insert the song details into the database
     c.execute("INSERT INTO songs (name, artist, spotify_link, youtube_link) VALUES (?, ?, ?, ?)",

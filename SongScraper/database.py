@@ -1,6 +1,6 @@
 # This file manages the database operations.
-from spotify_auth import liked_songs
-from add_song import *
+# import spotify_auth
+# from SongScraper.add_songs import *
 import sqlite3
 
 

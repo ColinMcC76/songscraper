@@ -1,10 +1,10 @@
-import database
+from database import connect_to_database
 import sqlite3
 
 def clear_database():
     # Connect to the database
     # print("this aint working dog")
-    conn, c= database.connect_to_database()
+    conn, c= connect_to_database()
     # print(conn,c)
     
 
