@@ -10,7 +10,7 @@ def convert_to_MP3(songs):
     for song in songs:
         youtube_link = song[4]
         mp3_filename = f"spotify_saved_songs/{song[1]}_{song[2]}.mp3"
-        print(f"Parameters : {youtube_link}, {mp3_filename}")
+        # print(f"Parameters : {youtube_link}, {mp3_filename}")
 
     # Use youtube-dl to download audio as MP3
-        # subprocess.run(['youtube-dl', '--extract-audio', '--audio-format', 'mp3', '-o', mp3_filename, youtube_link])
+        subprocess.run(['yt-dlp', '--verbose', '--extract-audio', '--audio-format', 'mp3', '-o', mp3_filename, youtube_link])
